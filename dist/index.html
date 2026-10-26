@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find basketball drop-ins, pickup games, and court rentals across Mississauga and the GTA. Compare schedules, prices, and official booking links in one place."
+    />
+    <meta name="theme-color" content="#11151b" />
+    <title>CourtPing — Basketball drop-ins and open courts in the GTA</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CourtPing",
+        "url": "https://courtping.pages.dev/",
+        "description": "Basketball drop-ins, pickup games, and court rentals across the GTA."
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#results">Skip to results</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="CourtPing home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Court<span>Ping</span></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#results">Find a court</a>
+        <a href="#how-it-works">How it works</a>
+        <button class="location-button" type="button" id="locationButton">
+          <span aria-hidden="true">⌖</span> Mississauga
+        </button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="court-lines" aria-hidden="true">
+          <span class="half-circle"></span>
+          <span class="key-box"></span>
+          <span class="center-line"></span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> GTA BASKETBALL, IN ONE PLACE</p>
+          <h1 id="hero-title">Find somewhere<br />to <em>hoop tonight.</em></h1>
+          <p class="hero-intro">
+            City drop-ins and private courts, sorted by time and distance.
+            We show the options; you book with the official provider.
+          </p>
+
+          <form class="hero-search" id="heroSearch" role="search">
+            <label class="search-field">
+              <span class="sr-only">Search by venue or neighbourhood</span>
+              <span aria-hidden="true">⌕</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Venue, neighbourhood, or postal code"
+                autocomplete="off"
+              />
+            </label>
+            <label class="date-field">
+              <span class="sr-only">Choose a date range</span>
+              <select id="heroDate">
+                <option value="today">Today</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="week">This week</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">Find courts <span>→</span></button>
+          </form>
+
+          <div class="hero-meta" aria-label="Coverage summary">
+            <span><strong>11</strong> listings checked</span>
+            <span><strong>6</strong> neighbourhoods</span>
+            <span><strong>0</strong> booking fees</span>
+          </div>
+        </div>
+
+        <aside class="tonight-card" aria-label="Tonight at a glance">
+          <div class="live-label"><span></span> MONDAY PREVIEW</div>
+          <p class="tonight-date" id="tonightDate">Tonight</p>
+          <div class="mini-list">
+            <div>
+              <span class="mini-time">8:00</span>
+              <span><strong>Kings Courts Sismet</strong><small>Adult pickup · $10</small></span>
+              <span class="mini-status">BOOK</span>
+            </div>
+            <div>
+              <span class="mini-time">24/7</span>
+              <span><strong>Game Court Derry</strong><small>Private rental · from $35</small></span>
+              <span class="mini-status blue">CHECK</span>
+            </div>
+          </div>
+          <a href="#results">See all options <span>↓</span></a>
+        </aside>
+      </section>
+
+      <section class="trust-strip" aria-label="Product benefits">
+        <p><span>01</span> City + private courts</p>
+        <p><span>02</span> One clean schedule</p>
+        <p><span>03</span> Official booking links</p>
+        <p><span>04</span> Freshness shown clearly</p>
+      </section>
+
+      <section class="finder" id="results" aria-labelledby="results-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark"><span></span> MISSISSAUGA</p>
+            <h2 id="results-title">Places to play</h2>
+          </div>
+          <div class="date-tabs" role="group" aria-label="Filter by date">
+            <button class="active" type="button" data-date="today">Today</button>
+            <button type="button" data-date="tomorrow">Tomorrow</button>
+            <button type="button" data-date="week">This week</button>
+          </div>
+        </div>
+
+        <div class="filter-bar" aria-label="Court filters">
+          <label>
+            <span>Venue</span>
+            <select id="venueTypeFilter">
+              <option value="all">City + private</option>
+              <option value="municipal">City facilities</option>
+              <option value="private">Private facilities</option>
+            </select>
+          </label>
+          <label>
+            <span>Play type</span>
+            <select id="playTypeFilter">
+              <option value="all">All play types</option>
+              <option value="dropin">Drop-in / pickup</option>
+              <option value="rental">Court rental</option>
+            </select>
+          </label>
+          <label>
+            <span>Age</span>
+            <select id="ageFilter">
+              <option value="all">All ages</option>
+              <option value="adult">Adult 18+</option>
+              <option value="youth">Youth</option>
+              <option value="older">Older adult 55+</option>
+            </select>
+          </label>
+          <label class="toggle-label">
+            <input type="checkbox" id="onlineOnlyFilter" />
+            <span class="toggle" aria-hidden="true"></span>
+            Online booking
+          </label>
+          <button type="button" class="clear-button" id="clearFilters">Clear</button>
+        </div>
+
+        <div class="results-toolbar">
+          <p><strong id="resultCount">0 options</strong> matching your filters</p>
+          <label>
+            <span>Sort by</span>
+            <select id="sortSelect">
+              <option value="soonest">Soonest</option>
+              <option value="distance">Distance</option>
+              <option value="price">Lowest price</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="finder-layout">
+          <div class="results-list" id="resultsList" aria-live="polite"></div>
+
+          <aside class="map-panel" aria-label="Map of court locations">
+            <div class="map-toolbar">
+              <strong>Mississauga</strong>
+              <span>Map preview</span>
+            </div>
+            <div class="map-canvas" id="mapCanvas">
+              <svg viewBox="0 0 620 540" preserveAspectRatio="none" aria-hidden="true">
+                <path class="water" d="M-20 482 C120 425 235 490 345 448 C450 408 522 418 650 356 L650 570 L-20 570Z" />
+                <path class="road major" d="M-30 115 C130 148 288 103 650 155" />
+                <path class="road major" d="M70 -20 C150 108 188 241 232 565" />
+                <path class="road" d="M-20 278 C160 220 374 294 650 230" />
+                <path class="road" d="M365 -20 C340 120 384 320 470 560" />
+                <path class="road" d="M535 -20 C486 140 546 260 590 420" />
+                <path class="road thin" d="M-20 372 C166 348 362 388 650 330" />
+                <text x="22" y="99">HWY 401</text>
+                <text x="254" y="265">EGLINTON AVE</text>
+                <text x="24" y="360">BURNHAMTHORPE RD</text>
+                <text x="412" y="432">LAKE ONTARIO</text>
+              </svg>
+              <div id="mapPins"></div>
+              <div class="map-note"><span></span> Approximate locations</div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="data-note">
+          <div aria-hidden="true">i</div>
+          <p>
+            <strong>Know before you go.</strong> “Facility open” does not always mean a
+            court or drop-in spot is available. CourtPing shows the source and last-checked
+            time so you can verify before leaving.
+          </p>
+        </div>
+      </section>
+
+      <section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+        <div>
+          <p class="eyebrow"><span></span> LESS SEARCHING, MORE PLAYING</p>
+          <h2 id="how-title">One search.<br />Every kind of court.</h2>
+        </div>
+        <ol>
+          <li><span>1</span><strong>Pick a time</strong><p>Tonight, tomorrow, or whenever your schedule opens up.</p></li>
+          <li><span>2</span><strong>Compare options</strong><p>See city drop-ins and private rentals in the same list.</p></li>
+          <li><span>3</span><strong>Book at the source</strong><p>Continue to the official provider—CourtPing never adds a fee.</p></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand inverse" href="#top">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Court<span>Ping</span></span>
+      </a>
+      <p>GTA basketball schedules, without the tab overload.</p>
+      <p class="footer-note">Prototype · Data must be confirmed with official providers.</p>
+    </footer>
+
+    <dialog id="detailDialog">
+      <button class="dialog-close" type="button" aria-label="Close details">×</button>
+      <div id="dialogContent"></div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
