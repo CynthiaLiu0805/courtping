@@ -3,6 +3,7 @@ name: Deploy website preview
 on:
   push:
     branches:
+      - main
       - feature/initial-site
   workflow_dispatch:
 
