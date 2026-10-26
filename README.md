@@ -2,6 +2,10 @@
 
 Static first-version prototype for a GTA basketball drop-in and court-rental aggregator.
 
+## Preview
+
+https://cynthialiu0805.github.io/courtping/
+
 ## Run locally
 
 From this folder:
